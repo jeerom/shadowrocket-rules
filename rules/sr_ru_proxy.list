@@ -85,34 +85,10 @@ IP-CIDR,35.207.153.38/32,no-resolve
 IP-CIDR,35.217.0.137/32,no-resolve
 IP-CIDR,34.2.28.238/32,no-resolve
 
-# Brawl Stars lag fix — UDP relay/IP pools from PacketTunnel-20260425231051.log
-# In Config mode these UDP targets matched FINAL,DIRECT; after switching global routing to Proxy, lag disappeared.
-# Broader ranges are used only for recurring cloud/relay pools observed across Brawl logs; this avoids chasing rotating /32 endpoints.
-IP-CIDR,15.160.0.0/15,no-resolve
-IP-CIDR,15.181.0.0/16,no-resolve
-IP-CIDR,15.207.0.0/16,no-resolve
-IP-CIDR,15.254.0.0/16,no-resolve
-IP-CIDR,16.176.0.0/16,no-resolve
-IP-CIDR,34.0.48.0/20,no-resolve
-IP-CIDR,34.2.0.0/17,no-resolve
-IP-CIDR,34.39.0.0/16,no-resolve
-IP-CIDR,34.84.0.0/16,no-resolve
-IP-CIDR,34.95.0.0/16,no-resolve
-IP-CIDR,34.96.0.0/16,no-resolve
-IP-CIDR,34.150.0.0/16,no-resolve
-IP-CIDR,35.92.0.0/16,no-resolve
-IP-CIDR,35.200.0.0/16,no-resolve
-IP-CIDR,35.207.0.0/16,no-resolve
-IP-CIDR,35.217.0.0/16,no-resolve
-IP-CIDR,43.158.0.0/16,no-resolve
-IP-CIDR,43.164.0.0/16,no-resolve
-IP-CIDR,51.118.0.0/16,no-resolve
-IP-CIDR,54.185.0.0/16,no-resolve
-IP-CIDR,54.209.0.0/16,no-resolve
-IP-CIDR,54.252.0.0/16,no-resolve
-IP-CIDR,63.33.0.0/16,no-resolve
-IP-CIDR,64.187.128.0/18,no-resolve
-IP-CIDR,65.2.0.0/16,no-resolve
-IP-CIDR,70.224.200.129/32,no-resolve
-IP-CIDR,96.0.16.0/20,no-resolve
-IP-CIDR,108.131.0.0/16,no-resolve
+# KinoPub — added from PacketTunnel-20260425232234.log
+# In Config mode kino.pub and its push endpoint matched FINAL,DIRECT.
+DOMAIN-SUFFIX,kino.pub
+DOMAIN,kino.pub
+DOMAIN,m.pushbr.com
+IP-CIDR,8.47.69.6/32,no-resolve
+IP-CIDR,8.6.112.6/32,no-resolve
