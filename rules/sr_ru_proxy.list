@@ -24,7 +24,6 @@ DOMAIN-SUFFIX,telegram.space
 DOMAIN-SUFFIX,telega.one
 DOMAIN-KEYWORD,telegram
 DOMAIN-KEYWORD,nicegram
-
 # Telegram official IPv4 CIDR ranges
 IP-CIDR,91.105.192.0/23,no-resolve
 IP-CIDR,91.108.4.0/22,no-resolve
@@ -35,11 +34,9 @@ IP-CIDR,91.108.20.0/22,no-resolve
 IP-CIDR,91.108.56.0/22,no-resolve
 IP-CIDR,149.154.160.0/20,no-resolve
 IP-CIDR,185.76.151.0/24,no-resolve
-
 # Extra Telegram-related IPv4 ranges often present in community rules
 IP-CIDR,5.28.192.0/18,no-resolve
 IP-CIDR,95.161.64.0/20,no-resolve
-
 # Brawl Stars / Supercell domains
 DOMAIN-SUFFIX,supercell.com
 DOMAIN-SUFFIX,brawlstars.com
@@ -54,7 +51,6 @@ DOMAIN-SUFFIX,inventory.mtech.supercell.com
 DOMAIN-SUFFIX,collector.snowplow.supercell.com
 DOMAIN-KEYWORD,supercell
 DOMAIN-KEYWORD,brawlstars
-
 # Brawl Stars companion services observed in logs
 DOMAIN-SUFFIX,appsflyersdk.com
 DOMAIN-SUFFIX,appsflyer.com
@@ -62,7 +58,6 @@ DOMAIN-SUFFIX,app-analytics-services.com
 DOMAIN-SUFFIX,app-measurement.com
 DOMAIN-SUFFIX,usercentrics.eu
 DOMAIN-SUFFIX,sentry.io
-
 # Brawl Stars UDP/IP candidates observed in logs; exact /32 only to avoid broad cloud routing
 IP-CIDR,54.185.104.67/32,no-resolve
 IP-CIDR,15.254.46.133/32,no-resolve
@@ -84,3 +79,8 @@ IP-CIDR,34.0.54.226/32,no-resolve
 IP-CIDR,35.207.153.38/32,no-resolve
 IP-CIDR,35.217.0.137/32,no-resolve
 IP-CIDR,34.2.28.238/32,no-resolve
+# Brawl Stars additional UDP/IP candidates from PacketTunnel-20260425225655.log
+# These appeared as FINAL,DIRECT during active gameplay and may cause mixed routing / lag.
+IP-CIDR,43.158.102.129/32,no-resolve
+IP-CIDR,43.158.96.173/32,no-resolve
+IP-CIDR,15.160.161.218/32,no-resolve
