@@ -1,0 +1,84 @@
+# sr_ru_direct.list
+# Banking / finance / payment infrastructure — route DIRECT.
+# Format: Shadowrocket RULE-SET entries without policy column.
+# Used by: RULE-SET,.../sr_ru_direct.list,DIRECT
+
+# Т-Банк / Т-Инвестиции / бывш. Tinkoff
+DOMAIN-SUFFIX,tbank.ru
+DOMAIN-SUFFIX,tinkoff.ru
+DOMAIN-SUFFIX,t-bank-app.ru
+DOMAIN-SUFFIX,cdn-tinkoff.ru
+DOMAIN-SUFFIX,t-static.ru
+DOMAIN-SUFFIX,tcsbank.ru
+
+# Сбер / Сбербанк
+DOMAIN-SUFFIX,sberbank.ru
+DOMAIN-SUFFIX,sber.ru
+DOMAIN-SUFFIX,sberbank.com
+DOMAIN-SUFFIX,domclick.ru
+DOMAIN-SUFFIX,sberdevices.ru
+
+# Альфа-Банк
+DOMAIN-SUFFIX,alfabank.ru
+DOMAIN-SUFFIX,alfabank.com
+DOMAIN-SUFFIX,alfa-bank.ru
+DOMAIN-SUFFIX,alfadirect.ru
+DOMAIN-SUFFIX,alfastrah.ru
+DOMAIN-SUFFIX,servicecdn.ru
+
+# МТС Банк / МТС Деньги
+DOMAIN-SUFFIX,mtsbank.ru
+DOMAIN-SUFFIX,mtsdengi.ru
+DOMAIN,sb.mts.ru
+DOMAIN,api.a.mts.ru
+DOMAIN,cm.a.mts.ru
+DOMAIN,pn.mts.ru
+DOMAIN,static.a.mts.ru
+DOMAIN,tag.a.mts.ru
+
+# Ozon Банк / Ozon Finance — financial subdomains only, not all ozon.ru
+DOMAIN,finance.ozon.ru
+DOMAIN,api.finance.ozon.ru
+DOMAIN-SUFFIX,finance.ozon.ru
+
+# Платёжная инфраструктура РФ / карты Мир / СБП
+DOMAIN-SUFFIX,nspk.ru
+DOMAIN-SUFFIX,privetmir.ru
+DOMAIN-SUFFIX,mironline.ru
+DOMAIN-SUFFIX,sbp.nspk.ru
+
+# Popular Russian banks and finance apps
+DOMAIN-SUFFIX,vtb.ru
+DOMAIN-SUFFIX,pochtabank.ru
+DOMAIN-SUFFIX,gazprombank.ru
+DOMAIN-SUFFIX,gpb.ru
+DOMAIN-SUFFIX,raiffeisen.ru
+DOMAIN-SUFFIX,raiffeisenbank.ru
+DOMAIN-SUFFIX,psbank.ru
+DOMAIN-SUFFIX,psb.ru
+DOMAIN-SUFFIX,sovcombank.ru
+DOMAIN-SUFFIX,halvacard.ru
+DOMAIN-SUFFIX,open.ru
+DOMAIN-SUFFIX,openbank.ru
+DOMAIN-SUFFIX,rshb.ru
+DOMAIN-SUFFIX,rosselhozbank.ru
+DOMAIN-SUFFIX,domrfbank.ru
+DOMAIN-SUFFIX,domrf.ru
+DOMAIN-SUFFIX,akbars.ru
+DOMAIN-SUFFIX,uralsib.ru
+DOMAIN-SUFFIX,rencredit.ru
+DOMAIN-SUFFIX,otpbank.ru
+DOMAIN-SUFFIX,mkb.ru
+DOMAIN-SUFFIX,rosbank.ru
+DOMAIN-SUFFIX,rncb.ru
+DOMAIN-SUFFIX,bspb.ru
+DOMAIN-SUFFIX,bankffin.ru
+DOMAIN-SUFFIX,finam.ru
+DOMAIN-SUFFIX,bcs.ru
+DOMAIN-SUFFIX,bcspremier.ru
+DOMAIN-SUFFIX,unicreditbank.ru
+DOMAIN-SUFFIX,citibank.ru
+DOMAIN-SUFFIX,zenit.ru
+DOMAIN-SUFFIX,expobank.ru
+DOMAIN-SUFFIX,solid.ru
+DOMAIN-SUFFIX,solidarnost.ru
