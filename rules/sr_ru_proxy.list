@@ -3,6 +3,10 @@
 # Brawl Stars / Supercell продублированы также в sr_ru_extended.conf, чтобы сработать до REJECT.
 
 # --- Brawl Stars / Supercell ---
+DOMAIN,cdn.id.supercell.com
+DOMAIN,assets.social.supercell.com
+DOMAIN,collector.snowplow.supercell.com
+DOMAIN,game.brawlstarsgame.com
 DOMAIN-SUFFIX,supercell.com
 DOMAIN-SUFFIX,supercell.net
 DOMAIN-SUFFIX,brawlstars.com
@@ -10,6 +14,12 @@ DOMAIN-SUFFIX,brawlstarsgame.com
 DOMAIN-SUFFIX,game-assets.brawlstarsgame.com
 DOMAIN-KEYWORD,supercell
 DOMAIN-KEYWORD,brawlstars
+
+# --- Brawl Stars real game servers observed in log 2026-04-26 ---
+# game.brawlstarsgame.com resolved to 52.33.95.61; Shadowrocket then saw raw IP:9339 and sent it FINAL,DIRECT.
+# Keep these IP rules in PROXY so the actual game socket does not bypass proxy after DNS resolution.
+IP-CIDR,52.33.95.61/32,no-resolve
+
 
 # Supercell/game support infrastructure often seen around game launch, auth, telemetry, CDN.
 # Важно: эти домены НЕ блокируем в reject, а пускаем через proxy.
