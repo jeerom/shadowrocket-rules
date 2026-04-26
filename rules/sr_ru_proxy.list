@@ -124,3 +124,14 @@ IP-CIDR,44.241.61.155/32,no-resolve
 # Brawl Stars auth/diagnostics observed around login. Keep with PROXY, not REJECT/DIRECT.
 DOMAIN,o315582.ingest.sentry.io
 DOMAIN-SUFFIX,sentry.io
+
+# Brawl Stars lag fix v2 — game server AWS pools after tun-included-routes removal
+# Do NOT add these to tun-included-routes. Keep them as normal RULE-SET IP-CIDR entries.
+# Reason: in Config mode game.brawlstarsgame.com resolves to raw IPs on :9339; domain rule no longer applies.
+# Full Proxy removed lags, so these rotating game-server IP pools must stay on PROXY too.
+IP-CIDR,44.240.0.0/15,no-resolve
+IP-CIDR,52.32.0.0/15,no-resolve
+
+# Exact Brawl Stars game-server IPs observed in recent logs; kept for diagnostics/readability.
+IP-CIDR,44.241.61.155/32,no-resolve
+IP-CIDR,52.33.95.61/32,no-resolve
