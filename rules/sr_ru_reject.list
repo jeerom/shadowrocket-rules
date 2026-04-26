@@ -42,7 +42,7 @@ DOMAIN-SUFFIX,appmetrica.yandex.ru
 
 # --- Known telemetry / diagnostics, relatively safe to block ---
 DOMAIN-SUFFIX,bugsnag.com
-DOMAIN-SUFFIX,sentry.io
+# commect due to Brawl stars login problem: DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,datadoghq-browser-agent.com
 
 # --- Suspicious ad keywords; keep narrow ---
