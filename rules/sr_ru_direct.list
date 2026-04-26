@@ -1,84 +1,94 @@
-# sr_ru_direct.list
-# Banking / finance / payment infrastructure — route DIRECT.
-# Format: Shadowrocket RULE-SET entries without policy column.
-# Used by: RULE-SET,.../sr_ru_direct.list,DIRECT
+# rules/sr_ru_direct.list
+# Всё, что должно идти напрямую.
+# Apple/iCloud продублированы также в sr_ru_extended.conf для надёжности.
 
-# Т-Банк / Т-Инвестиции / бывш. Tinkoff
-DOMAIN-SUFFIX,tbank.ru
-DOMAIN-SUFFIX,tinkoff.ru
-DOMAIN-SUFFIX,t-bank-app.ru
-DOMAIN-SUFFIX,cdn-tinkoff.ru
-DOMAIN-SUFFIX,t-static.ru
-DOMAIN-SUFFIX,tcsbank.ru
+# --- Apple / iCloud / App Store / Push ---
+DOMAIN-SUFFIX,apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,icloud-content.com
+DOMAIN-SUFFIX,cdn-apple.com
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN-SUFFIX,aaplimg.com
+DOMAIN-SUFFIX,me.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,gc.apple.com
+DOMAIN-SUFFIX,iwork.apple.com
+DOMAIN-SUFFIX,apple-mapkit.com
+DOMAIN-SUFFIX,apple-cloudkit.com
+DOMAIN-SUFFIX,icloud.com.cn
+DOMAIN-KEYWORD,icloud
+DOMAIN-KEYWORD,apple
+IP-CIDR,17.0.0.0/8,no-resolve
+IP-CIDR6,2403:300::/32,no-resolve
+IP-CIDR6,2620:149::/32,no-resolve
 
-# Сбер / Сбербанк
+# --- Local / Private networks ---
+DOMAIN-SUFFIX,local
+IP-CIDR,10.0.0.0/8,no-resolve
+IP-CIDR,100.64.0.0/10,no-resolve
+IP-CIDR,127.0.0.0/8,no-resolve
+IP-CIDR,169.254.0.0/16,no-resolve
+IP-CIDR,172.16.0.0/12,no-resolve
+IP-CIDR,192.168.0.0/16,no-resolve
+IP-CIDR,224.0.0.0/4,no-resolve
+IP-CIDR,240.0.0.0/4,no-resolve
+
+# --- Russian banks / finance apps: keep DIRECT ---
 DOMAIN-SUFFIX,sberbank.ru
 DOMAIN-SUFFIX,sber.ru
-DOMAIN-SUFFIX,sberbank.com
-DOMAIN-SUFFIX,domclick.ru
-DOMAIN-SUFFIX,sberdevices.ru
-
-# Альфа-Банк
+DOMAIN-SUFFIX,online.sberbank.ru
+DOMAIN-SUFFIX,tbank.ru
+DOMAIN-SUFFIX,tinkoff.ru
+DOMAIN-SUFFIX,tinkoffbank.ru
 DOMAIN-SUFFIX,alfabank.ru
 DOMAIN-SUFFIX,alfabank.com
-DOMAIN-SUFFIX,alfa-bank.ru
-DOMAIN-SUFFIX,alfadirect.ru
-DOMAIN-SUFFIX,alfastrah.ru
-DOMAIN-SUFFIX,servicecdn.ru
-
-# МТС Банк / МТС Деньги
-DOMAIN-SUFFIX,mtsbank.ru
-DOMAIN-SUFFIX,mtsdengi.ru
-DOMAIN,sb.mts.ru
-DOMAIN,api.a.mts.ru
-DOMAIN,cm.a.mts.ru
-DOMAIN,pn.mts.ru
-DOMAIN,static.a.mts.ru
-DOMAIN,tag.a.mts.ru
-
-# Ozon Банк / Ozon Finance — financial subdomains only, not all ozon.ru
-DOMAIN,finance.ozon.ru
-DOMAIN,api.finance.ozon.ru
-DOMAIN-SUFFIX,finance.ozon.ru
-
-# Платёжная инфраструктура РФ / карты Мир / СБП
-DOMAIN-SUFFIX,nspk.ru
-DOMAIN-SUFFIX,privetmir.ru
-DOMAIN-SUFFIX,mironline.ru
-DOMAIN-SUFFIX,sbp.nspk.ru
-
-# Popular Russian banks and finance apps
 DOMAIN-SUFFIX,vtb.ru
-DOMAIN-SUFFIX,pochtabank.ru
-DOMAIN-SUFFIX,gazprombank.ru
-DOMAIN-SUFFIX,gpb.ru
-DOMAIN-SUFFIX,raiffeisen.ru
-DOMAIN-SUFFIX,raiffeisenbank.ru
-DOMAIN-SUFFIX,psbank.ru
-DOMAIN-SUFFIX,psb.ru
-DOMAIN-SUFFIX,sovcombank.ru
-DOMAIN-SUFFIX,halvacard.ru
 DOMAIN-SUFFIX,open.ru
-DOMAIN-SUFFIX,openbank.ru
-DOMAIN-SUFFIX,rshb.ru
-DOMAIN-SUFFIX,rosselhozbank.ru
+DOMAIN-SUFFIX,raiffeisen.ru
+DOMAIN-SUFFIX,gazprombank.ru
+DOMAIN-SUFFIX,pochtabank.ru
 DOMAIN-SUFFIX,domrfbank.ru
-DOMAIN-SUFFIX,domrf.ru
-DOMAIN-SUFFIX,akbars.ru
-DOMAIN-SUFFIX,uralsib.ru
-DOMAIN-SUFFIX,rencredit.ru
+DOMAIN-SUFFIX,psbank.ru
+DOMAIN-SUFFIX,rsb.ru
 DOMAIN-SUFFIX,otpbank.ru
-DOMAIN-SUFFIX,mkb.ru
-DOMAIN-SUFFIX,rosbank.ru
-DOMAIN-SUFFIX,rncb.ru
-DOMAIN-SUFFIX,bspb.ru
-DOMAIN-SUFFIX,bankffin.ru
-DOMAIN-SUFFIX,finam.ru
-DOMAIN-SUFFIX,bcs.ru
-DOMAIN-SUFFIX,bcspremier.ru
-DOMAIN-SUFFIX,unicreditbank.ru
-DOMAIN-SUFFIX,citibank.ru
-DOMAIN-SUFFIX,zenit.ru
-DOMAIN-SUFFIX,expobank.ru
-DOMAIN-SUFFIX,solid.ru
-DOMAIN-SUFFIX,solidarnost.ru
+DOMAIN-SUFFIX,mtsbank.ru
+DOMAIN-SUFFIX,rencredit.ru
+DOMAIN-SUFFIX,ubrr.ru
+DOMAIN-SUFFIX,akbars.ru
+DOMAIN-SUFFIX,banki.ru
+DOMAIN-SUFFIX,nspk.ru
+DOMAIN-SUFFIX,mironline.ru
+DOMAIN-SUFFIX,cbr.ru
+DOMAIN-KEYWORD,sberbank
+DOMAIN-KEYWORD,tinkoff
+DOMAIN-KEYWORD,tbank
+DOMAIN-KEYWORD,alfabank
+DOMAIN-KEYWORD,gazprombank
+
+# --- Russian government / common local services ---
+DOMAIN-SUFFIX,gosuslugi.ru
+DOMAIN-SUFFIX,mos.ru
+DOMAIN-SUFFIX,nalog.gov.ru
+DOMAIN-SUFFIX,zakupki.gov.ru
+DOMAIN-SUFFIX,pfr.gov.ru
+DOMAIN-SUFFIX,sfr.gov.ru
+
+# --- Russian internet services usually better DIRECT ---
+DOMAIN-SUFFIX,yandex.ru
+DOMAIN-SUFFIX,yandex.net
+DOMAIN-SUFFIX,ya.ru
+DOMAIN-SUFFIX,mail.ru
+DOMAIN-SUFFIX,vk.com
+DOMAIN-SUFFIX,vk.ru
+DOMAIN-SUFFIX,ok.ru
+DOMAIN-SUFFIX,rutube.ru
+DOMAIN-SUFFIX,dzen.ru
+DOMAIN-SUFFIX,ozon.ru
+DOMAIN-SUFFIX,wildberries.ru
+DOMAIN-SUFFIX,avito.ru
+DOMAIN-SUFFIX,2gis.ru
+DOMAIN-SUFFIX,hh.ru
+DOMAIN-SUFFIX,hhcdn.ru
+DOMAIN-SUFFIX,kaspersky.ru
+DOMAIN-SUFFIX,drweb.ru

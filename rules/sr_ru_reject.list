@@ -1,16 +1,67 @@
-# sr_ru_reject.list
-# Fast reject / technical optimization rules.
-# Format: Shadowrocket RULE-SET entries without policy column.
-# Used by: RULE-SET,.../sr_ru_reject.list,REJECT
+# rules/sr_ru_reject.list
+# Осторожный REJECT.
+# ВАЖНО: этот список должен подключаться ПОСЛЕ direct.list и proxy.list.
+#
+# После проблем с Brawl Stars из REJECT убраны/закомментированы широкие правила:
+# - DOMAIN-KEYWORD,analytics
+# - DOMAIN-KEYWORD,tracking
+# - DOMAIN-SUFFIX,appsflyer.com
+# - DOMAIN-SUFFIX,adjust.com
+# - DOMAIN-SUFFIX,amplitude.com
+# - DOMAIN-SUFFIX,mixpanel.com
+#
+# Эти SDK могут участвовать в запуске, авторизации, anti-fraud или диагностике игр.
+# Если нужно вернуть блокировку, добавляй точечно после тестов.
 
-# Telegram IPv6: reject fast when base config has ipv6=false.
-# This avoids slow IPv6 connection attempts before Telegram falls back to IPv4.
-IP-CIDR6,2001:67c:4e8::/48,no-resolve
-IP-CIDR6,2001:b28:f23c::/48,no-resolve
-IP-CIDR6,2001:b28:f23d::/48,no-resolve
-IP-CIDR6,2001:b28:f23f::/48,no-resolve
-IP-CIDR6,2a0a:f280::/32,no-resolve
+# --- Safe ad domains ---
+DOMAIN-SUFFIX,doubleclick.net
+DOMAIN-SUFFIX,googlesyndication.com
+DOMAIN-SUFFIX,googleadservices.com
+DOMAIN-SUFFIX,adservice.google.com
+DOMAIN-SUFFIX,ads.youtube.com
+DOMAIN-SUFFIX,pagead2.googlesyndication.com
+DOMAIN-SUFFIX,adsystem.com
+DOMAIN-SUFFIX,adnxs.com
+DOMAIN-SUFFIX,adsrvr.org
+DOMAIN-SUFFIX,rubiconproject.com
+DOMAIN-SUFFIX,pubmatic.com
+DOMAIN-SUFFIX,taboola.com
+DOMAIN-SUFFIX,outbrain.com
+DOMAIN-SUFFIX,criteo.com
+DOMAIN-SUFFIX,scorecardresearch.com
 
-# Broader community Telegram IPv6 ranges; keep here instead of PROXY while IPv6 is disabled.
-IP-CIDR6,2001:b28:f23c::/47,no-resolve
-IP-CIDR6,2a0a:f280::/29,no-resolve
+# --- Conservative trackers ---
+DOMAIN-SUFFIX,google-analytics.com
+DOMAIN-SUFFIX,googletagmanager.com
+DOMAIN-SUFFIX,googletagservices.com
+DOMAIN-SUFFIX,facebook-analytics.com
+DOMAIN-SUFFIX,facebook.com/tr
+DOMAIN-SUFFIX,mc.yandex.ru
+DOMAIN-SUFFIX,metrika.yandex.ru
+DOMAIN-SUFFIX,appmetrica.yandex.ru
+
+# --- Known telemetry / diagnostics, relatively safe to block ---
+DOMAIN-SUFFIX,bugsnag.com
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,datadoghq-browser-agent.com
+
+# --- Suspicious ad keywords; keep narrow ---
+DOMAIN-KEYWORD,adservice
+DOMAIN-KEYWORD,adserver
+DOMAIN-KEYWORD,adclick
+DOMAIN-KEYWORD,adsystem
+
+# --- Temporarily disabled after Brawl Stars/iCloud issue ---
+# DOMAIN-KEYWORD,analytics
+# DOMAIN-KEYWORD,tracking
+# DOMAIN-KEYWORD,tracker
+# DOMAIN-KEYWORD,telemetry
+# DOMAIN-SUFFIX,appsflyer.com
+# DOMAIN-SUFFIX,appsflyersdk.com
+# DOMAIN-SUFFIX,adjust.com
+# DOMAIN-SUFFIX,adjust.io
+# DOMAIN-SUFFIX,amplitude.com
+# DOMAIN-SUFFIX,mixpanel.com
+# DOMAIN-SUFFIX,segment.io
+# DOMAIN-SUFFIX,crashlytics.com
+# DOMAIN-SUFFIX,firebase-settings.crashlytics.com

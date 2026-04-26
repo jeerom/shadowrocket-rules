@@ -1,94 +1,99 @@
-# sr_ru_proxy.list
-# Services to route through PROXY.
-# Format: Shadowrocket RULE-SET entries without policy column.
-# Used by: RULE-SET,.../sr_ru_proxy.list,PROXY
+# rules/sr_ru_proxy.list
+# Всё, что должно идти через proxy.
+# Brawl Stars / Supercell продублированы также в sr_ru_extended.conf, чтобы сработать до REJECT.
 
-# Telegram domains and web resources
-DOMAIN-SUFFIX,t.me
+# --- Brawl Stars / Supercell ---
+DOMAIN-SUFFIX,supercell.com
+DOMAIN-SUFFIX,supercell.net
+DOMAIN-SUFFIX,brawlstars.com
+DOMAIN-SUFFIX,brawlstarsgame.com
+DOMAIN-SUFFIX,game-assets.brawlstarsgame.com
+DOMAIN-KEYWORD,supercell
+DOMAIN-KEYWORD,brawlstars
+
+# Supercell/game support infrastructure often seen around game launch, auth, telemetry, CDN.
+# Важно: эти домены НЕ блокируем в reject, а пускаем через proxy.
+DOMAIN-SUFFIX,appsflyer.com
+DOMAIN-SUFFIX,appsflyersdk.com
+DOMAIN-SUFFIX,adjust.com
+DOMAIN-SUFFIX,adjust.io
+DOMAIN-SUFFIX,unity3d.com
+DOMAIN-SUFFIX,unity.com
+DOMAIN-SUFFIX,unityads.unity3d.com
+DOMAIN-SUFFIX,helpshift.com
+DOMAIN-SUFFIX,akamaized.net
+DOMAIN-SUFFIX,akamaihd.net
+DOMAIN-SUFFIX,cloudfront.net
+DOMAIN-SUFFIX,fastly.net
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,firebaseio.com
+DOMAIN-SUFFIX,firebaseapp.com
+DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com
+DOMAIN-SUFFIX,crashlytics.com
+
+# --- Telegram ---
 DOMAIN-SUFFIX,telegram.org
+DOMAIN-SUFFIX,t.me
+DOMAIN-SUFFIX,tdesktop.com
+DOMAIN-SUFFIX,telegra.ph
 DOMAIN-SUFFIX,telegram.me
 DOMAIN-SUFFIX,telegram.dog
-DOMAIN-SUFFIX,telesco.pe
-DOMAIN-SUFFIX,telegra.ph
-DOMAIN-SUFFIX,legra.ph
-DOMAIN-SUFFIX,graph.org
-DOMAIN-SUFFIX,comments.app
-DOMAIN-SUFFIX,contest.com
-DOMAIN-SUFFIX,telegram-cdn.org
-DOMAIN-SUFFIX,cdn-telegram.org
-DOMAIN-SUFFIX,telegramdownload.com
-DOMAIN-SUFFIX,tdesktop.com
-DOMAIN-SUFFIX,tg.dev
-DOMAIN-SUFFIX,tx.me
-DOMAIN-SUFFIX,telegram.space
-DOMAIN-SUFFIX,telega.one
 DOMAIN-KEYWORD,telegram
-DOMAIN-KEYWORD,nicegram
-
-# Telegram official IPv4 CIDR ranges
-IP-CIDR,91.105.192.0/23,no-resolve
 IP-CIDR,91.108.4.0/22,no-resolve
 IP-CIDR,91.108.8.0/22,no-resolve
 IP-CIDR,91.108.12.0/22,no-resolve
 IP-CIDR,91.108.16.0/22,no-resolve
 IP-CIDR,91.108.20.0/22,no-resolve
 IP-CIDR,91.108.56.0/22,no-resolve
-IP-CIDR,149.154.160.0/20,no-resolve
-IP-CIDR,185.76.151.0/24,no-resolve
-
-# Extra Telegram-related IPv4 ranges often present in community rules
-IP-CIDR,5.28.192.0/18,no-resolve
 IP-CIDR,95.161.64.0/20,no-resolve
+IP-CIDR,149.154.160.0/20,no-resolve
 
-# Brawl Stars / Supercell domains
-DOMAIN-SUFFIX,supercell.com
-DOMAIN-SUFFIX,brawlstars.com
-DOMAIN-SUFFIX,brawlstarsgame.com
-DOMAIN-SUFFIX,game.brawlstarsgame.com
-DOMAIN-SUFFIX,brawlstars.inbox.supercell.com
-DOMAIN-SUFFIX,id.supercell.com
-DOMAIN-SUFFIX,cdn.id.supercell.com
-DOMAIN-SUFFIX,proxy.social.supercell.com
-DOMAIN-SUFFIX,assets.social.supercell.com
-DOMAIN-SUFFIX,inventory.mtech.supercell.com
-DOMAIN-SUFFIX,collector.snowplow.supercell.com
-DOMAIN-KEYWORD,supercell
-DOMAIN-KEYWORD,brawlstars
+# --- WhatsApp / Meta calling and messaging, if needed ---
+DOMAIN-SUFFIX,whatsapp.com
+DOMAIN-SUFFIX,whatsapp.net
+DOMAIN-SUFFIX,fbcdn.net
+DOMAIN-SUFFIX,facebook.com
+DOMAIN-SUFFIX,facebook.net
+DOMAIN-SUFFIX,meta.com
+DOMAIN-SUFFIX,instagram.com
 
-# Brawl Stars companion services observed in logs
-DOMAIN-SUFFIX,appsflyersdk.com
-DOMAIN-SUFFIX,appsflyer.com
-DOMAIN-SUFFIX,app-analytics-services.com
-DOMAIN-SUFFIX,app-measurement.com
-DOMAIN-SUFFIX,usercentrics.eu
-DOMAIN-SUFFIX,sentry.io
-
-# Brawl Stars UDP/IP candidates observed in logs; exact /32 only to avoid broad cloud routing
-IP-CIDR,54.185.104.67/32,no-resolve
-IP-CIDR,15.254.46.133/32,no-resolve
-IP-CIDR,3.219.237.178/32,no-resolve
-IP-CIDR,64.187.131.94/32,no-resolve
-IP-CIDR,15.181.194.63/32,no-resolve
-IP-CIDR,34.84.85.249/32,no-resolve
-IP-CIDR,108.131.208.85/32,no-resolve
-IP-CIDR,54.252.199.16/32,no-resolve
-IP-CIDR,34.96.154.239/32,no-resolve
-IP-CIDR,15.161.128.132/32,no-resolve
-IP-CIDR,96.0.20.90/32,no-resolve
-IP-CIDR,34.95.195.81/32,no-resolve
-IP-CIDR,43.158.103.11/32,no-resolve
-IP-CIDR,65.2.82.63/32,no-resolve
-IP-CIDR,43.164.75.75/32,no-resolve
-IP-CIDR,43.158.99.32/32,no-resolve
-IP-CIDR,34.0.54.226/32,no-resolve
-IP-CIDR,35.207.153.38/32,no-resolve
-IP-CIDR,35.217.0.137/32,no-resolve
-IP-CIDR,34.2.28.238/32,no-resolve
-
-# KinoPub — added from PacketTunnel-20260425232234.log
-# In Config mode kino.pub and its push endpoint matched FINAL,DIRECT.
+# --- kino.pub ---
 DOMAIN-SUFFIX,kino.pub
-DOMAIN,kino.pub
-DOMAIN,m.pushbr.com
-IP-CIDR,8.47.69.6/32,no-resolve
-IP-CIDR,8.6.112.6/32,no-resolve
+DOMAIN-SUFFIX,kinopub.me
+DOMAIN-KEYWORD,kino.pub
+DOMAIN-KEYWORD,kinopub
+
+# --- Common blocked/global services ---
+DOMAIN-SUFFIX,google.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN-SUFFIX,githubassets.com
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discord.gg
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
+DOMAIN-SUFFIX,spotify.com
+DOMAIN-SUFFIX,spotifycdn.com
+DOMAIN-SUFFIX,netflix.com
+DOMAIN-SUFFIX,nflxvideo.net
+DOMAIN-SUFFIX,nflximg.net
+DOMAIN-SUFFIX,linkedin.com
+DOMAIN-SUFFIX,medium.com
+DOMAIN-SUFFIX,notion.so
+DOMAIN-SUFFIX,reddit.com
+DOMAIN-SUFFIX,redd.it
+DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,twimg.com
+DOMAIN-SUFFIX,tiktok.com
+DOMAIN-SUFFIX,tiktokcdn.com
