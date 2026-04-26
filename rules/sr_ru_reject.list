@@ -1,17 +1,6 @@
 # rules/sr_ru_reject.list
-# Осторожный REJECT.
-# ВАЖНО: этот список должен подключаться ПОСЛЕ direct.list и proxy.list.
-#
-# После проблем с Brawl Stars из REJECT убраны/закомментированы широкие правила:
-# - DOMAIN-KEYWORD,analytics
-# - DOMAIN-KEYWORD,tracking
-# - DOMAIN-SUFFIX,appsflyer.com
-# - DOMAIN-SUFFIX,adjust.com
-# - DOMAIN-SUFFIX,amplitude.com
-# - DOMAIN-SUFFIX,mixpanel.com
-#
-# Эти SDK могут участвовать в запуске, авторизации, anti-fraud или диагностике игр.
-# Если нужно вернуть блокировку, добавляй точечно после тестов.
+# Осторожный REJECT. Подключать ПОСЛЕ direct.list и proxy.list.
+# После проблем с Brawl Stars НЕ блокируем sentry.io, appsflyer, adjust, firebase/crashlytics и analytics-ключевые слова.
 
 # --- Safe ad domains ---
 DOMAIN-SUFFIX,doubleclick.net
@@ -40,9 +29,8 @@ DOMAIN-SUFFIX,mc.yandex.ru
 DOMAIN-SUFFIX,metrika.yandex.ru
 DOMAIN-SUFFIX,appmetrica.yandex.ru
 
-# --- Known telemetry / diagnostics, relatively safe to block ---
+# --- Known telemetry / diagnostics, but NOT sentry.io during Brawl Stars testing ---
 DOMAIN-SUFFIX,bugsnag.com
-# commect due to Brawl stars login problem: DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,datadoghq-browser-agent.com
 
 # --- Suspicious ad keywords; keep narrow ---
@@ -51,7 +39,8 @@ DOMAIN-KEYWORD,adserver
 DOMAIN-KEYWORD,adclick
 DOMAIN-KEYWORD,adsystem
 
-# --- Temporarily disabled after Brawl Stars/iCloud issue ---
+# --- Disabled after Brawl Stars auth/connectivity issues ---
+# DOMAIN-SUFFIX,sentry.io
 # DOMAIN-KEYWORD,analytics
 # DOMAIN-KEYWORD,tracking
 # DOMAIN-KEYWORD,tracker
