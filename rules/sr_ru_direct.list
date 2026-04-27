@@ -1,8 +1,11 @@
-# rules/sr_ru_direct.list
+# sr_ru_direct.list
 # Всё, что должно идти напрямую.
-# Apple/iCloud продублированы также в sr_ru_extended.conf для надёжности.
+# Updated: 2026-04-27.
+# ВАЖНО: в профиле Brawl Stars файл sr_ru_extended.conf ставит PROXY выше DIRECT.
+# Поэтому точечные Apple/Game Center endpoints из sr_ru_proxy.list будут идти через PROXY,
+# а остальные Apple/iCloud сервисы останутся DIRECT по правилам ниже.
 
-# --- Apple / iCloud / App Store / Push ---
+# --- Apple / iCloud / Push: generally DIRECT ---
 DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,icloud-content.com
@@ -10,9 +13,6 @@ DOMAIN-SUFFIX,cdn-apple.com
 DOMAIN-SUFFIX,mzstatic.com
 DOMAIN-SUFFIX,aaplimg.com
 DOMAIN-SUFFIX,me.com
-DOMAIN-SUFFIX,itunes.apple.com
-DOMAIN-SUFFIX,apps.apple.com
-DOMAIN-SUFFIX,gc.apple.com
 DOMAIN-SUFFIX,iwork.apple.com
 DOMAIN-SUFFIX,apple-mapkit.com
 DOMAIN-SUFFIX,apple-cloudkit.com

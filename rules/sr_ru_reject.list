@@ -1,6 +1,8 @@
-# rules/sr_ru_reject.list
-# Осторожный REJECT. Подключать ПОСЛЕ direct.list и proxy.list.
-# После проблем с Brawl Stars НЕ блокируем sentry.io, appsflyer, adjust, firebase/crashlytics и analytics-ключевые слова.
+# sr_ru_reject.list
+# Осторожный REJECT. Подключать ПОСЛЕ proxy.list и direct.list.
+# Updated: 2026-04-27.
+# После проблем с Brawl Stars НЕ блокируем sentry.io, usercentrics, appsflyer,
+# app-analytics-services, app-measurement, adjust, firebase/crashlytics и общие analytics-keywords.
 
 # --- Safe ad domains ---
 DOMAIN-SUFFIX,doubleclick.net
@@ -41,12 +43,12 @@ DOMAIN-KEYWORD,adsystem
 
 # --- Disabled after Brawl Stars auth/connectivity issues ---
 # DOMAIN-SUFFIX,sentry.io
-# DOMAIN-KEYWORD,analytics
-# DOMAIN-KEYWORD,tracking
-# DOMAIN-KEYWORD,tracker
-# DOMAIN-KEYWORD,telemetry
+# DOMAIN-SUFFIX,usercentrics.eu
 # DOMAIN-SUFFIX,appsflyer.com
 # DOMAIN-SUFFIX,appsflyersdk.com
+# DOMAIN-SUFFIX,app-analytics-services.com
+# DOMAIN-SUFFIX,app-measurement.com
+# DOMAIN-SUFFIX,supercell.com
 # DOMAIN-SUFFIX,adjust.com
 # DOMAIN-SUFFIX,adjust.io
 # DOMAIN-SUFFIX,amplitude.com
@@ -54,3 +56,7 @@ DOMAIN-KEYWORD,adsystem
 # DOMAIN-SUFFIX,segment.io
 # DOMAIN-SUFFIX,crashlytics.com
 # DOMAIN-SUFFIX,firebase-settings.crashlytics.com
+# DOMAIN-KEYWORD,analytics
+# DOMAIN-KEYWORD,tracking
+# DOMAIN-KEYWORD,tracker
+# DOMAIN-KEYWORD,telemetry

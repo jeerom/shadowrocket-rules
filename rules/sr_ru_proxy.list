@@ -2,6 +2,9 @@
 # Services to route through PROXY.
 # Format: Shadowrocket RULE-SET entries without policy column.
 # Used by: RULE-SET,.../sr_ru_proxy.list,PROXY
+# Updated: 2026-04-27, based on Brawl Stars working GLOBAL PROXY log.
+# IMPORTANT: tun-included-routes is intentionally not used in this profile.
+# IMPORTANT: broad experimental cloud ranges 44.240.0.0/15 and 52.32.0.0/15 were removed.
 
 # Telegram domains and web resources
 DOMAIN-SUFFIX,t.me
@@ -40,30 +43,49 @@ IP-CIDR,185.76.151.0/24,no-resolve
 IP-CIDR,5.28.192.0/18,no-resolve
 IP-CIDR,95.161.64.0/20,no-resolve
 
-# Brawl Stars / Supercell domains
-DOMAIN-SUFFIX,supercell.com
-DOMAIN-SUFFIX,brawlstars.com
+# Brawl Stars / Supercell core, auth, social and support domains
 DOMAIN-SUFFIX,brawlstarsgame.com
+DOMAIN-SUFFIX,brawlstars.com
+DOMAIN-SUFFIX,supercell.com
 DOMAIN-SUFFIX,game.brawlstarsgame.com
 DOMAIN-SUFFIX,brawlstars.inbox.supercell.com
 DOMAIN-SUFFIX,id.supercell.com
 DOMAIN-SUFFIX,cdn.id.supercell.com
+DOMAIN-SUFFIX,security.id.supercell.com
 DOMAIN-SUFFIX,proxy.social.supercell.com
 DOMAIN-SUFFIX,assets.social.supercell.com
 DOMAIN-SUFFIX,inventory.mtech.supercell.com
 DOMAIN-SUFFIX,collector.snowplow.supercell.com
+DOMAIN-SUFFIX,mtech.supercell.com
+DOMAIN-SUFFIX,social.supercell.com
 DOMAIN-KEYWORD,supercell
 DOMAIN-KEYWORD,brawlstars
 
-# Brawl Stars companion services observed in logs
+# Brawl Stars companion services observed during launch/login; keep PROXY, not REJECT
+DOMAIN-SUFFIX,sentry.io
+DOMAIN,o315582.ingest.sentry.io
+DOMAIN-SUFFIX,usercentrics.eu
+DOMAIN-SUFFIX,helpshift.com
 DOMAIN-SUFFIX,appsflyersdk.com
 DOMAIN-SUFFIX,appsflyer.com
 DOMAIN-SUFFIX,app-analytics-services.com
 DOMAIN-SUFFIX,app-measurement.com
-DOMAIN-SUFFIX,usercentrics.eu
-DOMAIN-SUFFIX,sentry.io
 
-# Brawl Stars UDP/IP candidates observed in logs; exact /32 only to avoid broad cloud routing
+# Apple Game Center / Store endpoints observed in the working global Proxy session
+# These are intentionally in PROXY for the Brawl profile. The rule order in sr_ru_extended.conf must keep PROXY before DIRECT.
+DOMAIN-SUFFIX,gc.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,iadsdk.apple.com
+DOMAIN-SUFFIX,ls.apple.com
+DOMAIN,fpinit.itunes.apple.com
+DOMAIN,xp.apple.com
+DOMAIN,cl3.apple.com
+DOMAIN,gspe1-ssl.ls.apple.com
+DOMAIN,amp-api-edge.apps.apple.com
+DOMAIN,inappcheck.itunes.apple.com
+
+# Brawl Stars exact UDP/IP candidates from earlier logs; kept as /32 only for diagnostics
 IP-CIDR,54.185.104.67/32,no-resolve
 IP-CIDR,15.254.46.133/32,no-resolve
 IP-CIDR,3.219.237.178/32,no-resolve
@@ -78,60 +100,36 @@ IP-CIDR,96.0.20.90/32,no-resolve
 IP-CIDR,34.95.195.81/32,no-resolve
 IP-CIDR,43.158.103.11/32,no-resolve
 IP-CIDR,65.2.82.63/32,no-resolve
-IP-CIDR,43.164.75.75/32,no-resolve
 IP-CIDR,43.158.99.32/32,no-resolve
 IP-CIDR,34.0.54.226/32,no-resolve
 IP-CIDR,35.207.153.38/32,no-resolve
 IP-CIDR,35.217.0.137/32,no-resolve
 IP-CIDR,34.2.28.238/32,no-resolve
 
-# Brawl Stars lag fix — UDP relay/IP pools from PacketTunnel-20260425231051.log
-# In Config mode these UDP targets matched FINAL,DIRECT; after switching global routing to Proxy, lag disappeared.
-# Broader ranges are used only for recurring cloud/relay pools observed across Brawl logs; this avoids chasing rotating /32 endpoints.
-IP-CIDR,15.160.0.0/15,no-resolve
-IP-CIDR,15.181.0.0/16,no-resolve
-IP-CIDR,15.207.0.0/16,no-resolve
-IP-CIDR,15.254.0.0/16,no-resolve
-IP-CIDR,16.176.0.0/16,no-resolve
-IP-CIDR,34.0.48.0/20,no-resolve
-IP-CIDR,34.2.0.0/17,no-resolve
-IP-CIDR,34.39.0.0/16,no-resolve
-IP-CIDR,34.84.0.0/16,no-resolve
-IP-CIDR,34.95.0.0/16,no-resolve
-IP-CIDR,34.96.0.0/16,no-resolve
-IP-CIDR,34.150.0.0/16,no-resolve
-IP-CIDR,35.92.0.0/16,no-resolve
-IP-CIDR,35.200.0.0/16,no-resolve
-IP-CIDR,35.207.0.0/16,no-resolve
-IP-CIDR,35.217.0.0/16,no-resolve
-IP-CIDR,43.158.0.0/16,no-resolve
-IP-CIDR,43.164.0.0/16,no-resolve
-IP-CIDR,51.118.0.0/16,no-resolve
-IP-CIDR,54.185.0.0/16,no-resolve
-IP-CIDR,54.209.0.0/16,no-resolve
-IP-CIDR,54.252.0.0/16,no-resolve
-IP-CIDR,63.33.0.0/16,no-resolve
-IP-CIDR,64.187.128.0/18,no-resolve
-IP-CIDR,65.2.0.0/16,no-resolve
-IP-CIDR,70.224.200.129/32,no-resolve
-IP-CIDR,96.0.16.0/20,no-resolve
-IP-CIDR,108.131.0.0/16,no-resolve
-
-# Brawl Stars game server IPs observed after removing tun-included-routes
-# PacketTunnel-20260426230723.log: game.brawlstarsgame.com -> 44.241.61.155, port 9339, matched FINAL,DIRECT.
+# Brawl Stars TCP game server and UDP relay candidates from working GLOBAL PROXY log
+# Source log: PacketTunnel-20260427081155.log, session 08:49-08:56.
+# Exact /32 rules are used to avoid over-routing broad AWS/GCP/cloud ranges.
 IP-CIDR,44.241.61.155/32,no-resolve
-
-# Brawl Stars auth/diagnostics observed around login. Keep with PROXY, not REJECT/DIRECT.
-DOMAIN,o315582.ingest.sentry.io
-DOMAIN-SUFFIX,sentry.io
-
-# Brawl Stars lag fix v2 — game server AWS pools after tun-included-routes removal
-# Do NOT add these to tun-included-routes. Keep them as normal RULE-SET IP-CIDR entries.
-# Reason: in Config mode game.brawlstarsgame.com resolves to raw IPs on :9339; domain rule no longer applies.
-# Full Proxy removed lags, so these rotating game-server IP pools must stay on PROXY too.
-IP-CIDR,44.240.0.0/15,no-resolve
-IP-CIDR,52.32.0.0/15,no-resolve
-
-# Exact Brawl Stars game-server IPs observed in recent logs; kept for diagnostics/readability.
-IP-CIDR,44.241.61.155/32,no-resolve
+IP-CIDR,99.83.128.219/32,no-resolve
+IP-CIDR,34.212.167.204/32,no-resolve
+IP-CIDR,15.253.9.199/32,no-resolve
+IP-CIDR,100.52.177.5/32,no-resolve
+IP-CIDR,64.187.128.102/32,no-resolve
+IP-CIDR,34.153.222.134/32,no-resolve
+IP-CIDR,108.129.182.11/32,no-resolve
+IP-CIDR,34.0.57.154/32,no-resolve
+IP-CIDR,54.252.203.39/32,no-resolve
+IP-CIDR,34.96.254.210/32,no-resolve
+IP-CIDR,35.152.197.8/32,no-resolve
+IP-CIDR,96.0.16.159/32,no-resolve
+IP-CIDR,35.207.126.36/32,no-resolve
+IP-CIDR,43.158.97.244/32,no-resolve
+IP-CIDR,34.95.219.147/32,no-resolve
+IP-CIDR,35.217.6.242/32,no-resolve
+IP-CIDR,34.2.128.233/32,no-resolve
+IP-CIDR,3.111.42.2/32,no-resolve
+IP-CIDR,43.164.75.75/32,no-resolve
+IP-CIDR,15.181.199.193/32,no-resolve
+IP-CIDR,35.207.188.103/32,no-resolve
+IP-CIDR,43.158.97.253/32,no-resolve
 IP-CIDR,52.33.95.61/32,no-resolve
