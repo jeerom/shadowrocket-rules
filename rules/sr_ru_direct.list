@@ -1,6 +1,6 @@
 # sr_ru_direct.list
 # Всё, что должно идти напрямую.
-# Updated: 2026-04-27.
+# Updated: 2026-06-12.
 # ВАЖНО: в профиле Brawl Stars файл sr_ru_extended.conf ставит PROXY выше DIRECT.
 # Поэтому точечные Apple/Game Center endpoints из sr_ru_proxy.list будут идти через PROXY,
 # а остальные Apple/iCloud сервисы останутся DIRECT по правилам ниже.
@@ -41,6 +41,13 @@ DOMAIN-SUFFIX,online.sberbank.ru
 DOMAIN-SUFFIX,tbank.ru
 DOMAIN-SUFFIX,tinkoff.ru
 DOMAIN-SUFFIX,tinkoffbank.ru
+
+# T-Bank / T-Invest public API endpoints
+# Production: invest-public-api.tinkoff.ru:443
+# Sandbox: sandbox-invest-public-api.tinkoff.ru:443
+DOMAIN,invest-public-api.tinkoff.ru
+DOMAIN,sandbox-invest-public-api.tinkoff.ru
+
 DOMAIN-SUFFIX,alfabank.ru
 DOMAIN-SUFFIX,alfabank.com
 DOMAIN-SUFFIX,vtb.ru
