@@ -1,0 +1,21 @@
+#!name=SR Torrent DIRECT
+#!desc=Torrent protocol safeguards above all configuration rules
+
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/jeerom/shadowrocket-rules/main/rules/sr_torrent_direct.list,DIRECT
+USER-AGENT,*BitTorrent*,DIRECT
+USER-AGENT,*libtorrent*,DIRECT
+USER-AGENT,*qBittorrent*,DIRECT
+USER-AGENT,*Transmission*,DIRECT
+USER-AGENT,*uTorrent*,DIRECT
+DST-PORT,6881,DIRECT
+DST-PORT,6882,DIRECT
+DST-PORT,6883,DIRECT
+DST-PORT,6884,DIRECT
+DST-PORT,6885,DIRECT
+DST-PORT,6886,DIRECT
+DST-PORT,6887,DIRECT
+DST-PORT,6888,DIRECT
+DST-PORT,6889,DIRECT
+DST-PORT,6969,DIRECT
+DST-PORT,51413,DIRECT
